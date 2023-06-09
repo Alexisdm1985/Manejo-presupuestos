@@ -21,7 +21,7 @@ namespace manejo_presupuestos.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPost] // Crear tipo cuenta
         public async Task<IActionResult> Crear(TipoCuenta tipoCuenta)
         {
             //Valida que tenga los datos requeridos
@@ -45,6 +45,19 @@ namespace manejo_presupuestos.Controllers
             await repositorioTiposCuentas.Crear(tipoCuenta);
 
             return View();
+        }
+
+        [HttpGet] // Consultar si un tipo cuenta existe
+        public async Task<IActionResult> ExisteTipocuenta(string nombre)
+        {
+            var existeTipoCuenta = await repositorioTiposCuentas.Existe(nombre, 1); // UsuarioId = 1
+
+            if (existeTipoCuenta)
+            {
+                return Json($"El tipo de cuenta: {nombre}, ya existe en la base de datos");
+            }
+
+            return Json(true);
         }
     }
 }
