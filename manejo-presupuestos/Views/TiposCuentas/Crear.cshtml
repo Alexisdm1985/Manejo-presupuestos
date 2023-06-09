@@ -1,0 +1,19 @@
+﻿@model TipoCuenta
+@{
+    ViewData["Title"] = "Tipo de Cuenta";
+}
+
+
+<h1>Crear tipo de cuenta</h1>
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<form asp-controller="TiposCuentas" asp-action="Crear">
+    <div class="mb-3">
+        <label asp-for="Nombre" class="form-label"></label>
+        <input type="text" asp-for="Nombre" name="Nombre" placeholder="Ingrese nombre..." class="form-control mb-3" />
+        <button type="submit" class="btn btn-primary">
+            Enviar
+        </button>
+    </div>
+</form>
