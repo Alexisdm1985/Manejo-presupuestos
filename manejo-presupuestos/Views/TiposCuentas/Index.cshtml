@@ -3,9 +3,9 @@
     ViewData["Title"] = "Tipos Cuentas";
 }
 
-<h1>Tipos de cuentas</h1>
+<h1 class="mb-3">Tipos de cuentas</h1>
 
-<a asp-controller="TiposCuentas" asp-action="Crear" class="btn btn-primary">Crear tipo de cuenta</a>
+<a asp-controller="TiposCuentas" asp-action="Crear" class="btn btn-primary mb-3">Crear tipo de cuenta</a>
 
 <table class="table table-dark table-striped">
     <thead>
@@ -14,16 +14,61 @@
             <th scope="col">Nombre</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody id="reordenable">
         @foreach (var tipoCuenta in Model)
         {
             <tr>
                 <td scope="row">
+                    <input type="hidden" value="@tipoCuenta.Id" class="ids">
                     <a class="btn btn-primary" asp-route-id="@tipoCuenta.Id" asp-controller="TiposCuentas" asp-action="Editar">Editar</a>
-                    <a class="btn btn-danger" asp-route-id ="@tipoCuenta.Id" asp-controller="TiposCuentas" asp-action="Eliminar" >Eliminar</a>
+                    <a class="btn btn-danger" asp-route-id="@tipoCuenta.Id" asp-controller="TiposCuentas" asp-action="Eliminar">Eliminar</a>
                 </td>
                 <td scope="row">@tipoCuenta.Nombre</td>
             </tr>
         }
     </tbody>
 </table>
+
+@section Scripts {
+   
+    @*Script para ordenar los resultados de la tabla (no son persistentes los cambios)*@
+    <script>
+
+        const urlOrdenar = '@Url.Action("OrdenarTiposCuentas")'; //Llama a la accion en el controlador por defecto de esta vista
+
+        // JQuery-ui funcionality
+        $(function () {
+            $("#reordenable").sortable({
+                stop: async function (e, ui) {
+                    await actualizarOrden();
+                }
+            }); 
+        });
+
+        async function actualizarOrden (){
+            const ids = obtenerIds();
+           await enviarDatosAlBackEnd(ids);
+
+        }
+
+        function obtenerIds(){
+            const ids = $(".ids").map( function(){
+                return $(this).val();
+            }).get();
+
+            return ids;
+        }
+
+        async function enviarDatosAlBackEnd(ids) {
+            
+            const data = JSON.stringify(ids);
+
+            await fetch(urlOrdenar, {
+                method: 'POST',
+                headers: {'Content-Type':'application/json'},
+                body: data
+            });
+        }
+
+    </script>
+}

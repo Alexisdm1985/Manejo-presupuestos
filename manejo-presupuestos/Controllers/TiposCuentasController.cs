@@ -148,5 +148,11 @@ namespace manejo_presupuestos.Controllers
         {
             return await repositorioTiposCuentas.ObtenerTipoDeCuenta(id, usuarioId);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> OrdenarTiposCuentas([FromBody] int[] ids)
+        {
+            return Ok();
+        }
     }
 }
