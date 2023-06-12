@@ -13,6 +13,7 @@ namespace manejo_presupuestos.Servicios
         Task<IEnumerable<TipoCuenta>> ObtenerTiposCuentas(int usuarioId);
         Task<TipoCuenta> ObtenerTipoDeCuenta(int id, int usuarioId);
         Task Actualizar(TipoCuenta tipoCuenta);
+        Task Eliminar(int id);
     }
 
     public class RepositorioTiposCuentas : IRepositorioTiposCuentas
@@ -27,6 +28,14 @@ namespace manejo_presupuestos.Servicios
         }
 
         // ## METODOS
+
+        //Elimina un tipo de cuenta
+        public async Task Eliminar (int id)
+        {
+            using var cnn = new SqlConnection(connectionString);
+            await cnn.ExecuteAsync(@"DELETE TiposCuentas WHERE Id = @Id;",
+                new {id});
+        }
 
         //Obtener lista de los tipos de cuentas
         public async Task<IEnumerable<TipoCuenta>> ObtenerTiposCuentas(int usuarioId)

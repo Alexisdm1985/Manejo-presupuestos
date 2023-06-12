@@ -95,6 +95,39 @@ namespace manejo_presupuestos.Controllers
             return RedirectToAction("Index");
         }
 
+        //Muestra la vista de eliminar
+        [HttpGet]
+        public async Task<IActionResult> Eliminar(int id)
+        {
+            var usuarioId = servicioUsuarios.ObtenerUsuarioId();
+            var tipoCuenta = await repositorioTiposCuentas.ObtenerTipoDeCuenta(id, usuarioId);
+
+            if (tipoCuenta == null)
+            {
+                return RedirectToAction("NoEncontrado", "Home");
+            }
+
+            return View(tipoCuenta);
+            
+        }
+
+        //Elimina un tipo cuenta
+        [HttpPost]
+        public async Task<IActionResult> EliminarTipoCuenta(int id)
+        {
+            var usuarioId = servicioUsuarios.ObtenerUsuarioId();
+            var tipoCuenta = await repositorioTiposCuentas.ObtenerTipoDeCuenta(id, usuarioId);
+
+            if (tipoCuenta == null)
+            {
+                return RedirectToAction("NoEncontrado", "Home");
+            }
+
+            await repositorioTiposCuentas.Eliminar(id);
+
+            return RedirectToAction("Index");
+        }
+
         //Consulta si un tipo cuenta existe
         [HttpGet] //Nota: Este metodo se llama en el mismo modelo con un Remote
         public async Task<IActionResult> ExisteTipocuenta(string nombre)
