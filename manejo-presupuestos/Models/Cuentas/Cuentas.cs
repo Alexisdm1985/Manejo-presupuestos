@@ -1,0 +1,21 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace manejo_presupuestos.Models.Cuenta
+{
+    public class Cuentas
+    {
+        public int Id { get; set; }
+        
+        [Required(ErrorMessage = "El campo {0} es requerido")]
+        [StringLength(maximumLength: 50)]
+        public string Nombre { get; set; }
+        
+        [Display(Name = "Tipo de cuenta")]
+        public int TipoCuentaId { get; set; }
+
+        public decimal Balance { get; set; }
+        
+        [StringLength(maximumLength: 1000)]
+        public string? Descripcion { get; set; }
+    }
+}
