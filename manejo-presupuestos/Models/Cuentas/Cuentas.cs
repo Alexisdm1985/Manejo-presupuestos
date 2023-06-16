@@ -17,5 +17,7 @@ namespace manejo_presupuestos.Models.Cuenta
         
         [StringLength(maximumLength: 1000)]
         public string? Descripcion { get; set; }
+
+        public string? TipoCuenta { get; set; }
     }
 }

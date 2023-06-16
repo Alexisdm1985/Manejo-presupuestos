@@ -1,0 +1,27 @@
+﻿@using manejo_presupuestos.Models.Cuenta;
+@model IEnumerable<IndexCuentasViewModel>
+
+@{
+    ViewData["Title"] = "Cuentas";
+}
+
+<h1>Cuentas</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Tipo de cuenta</th>
+            <th>Nombre</th>
+            <th>Balance</th>
+        </tr>
+    </thead>
+    @foreach(var cuenta in Model)
+    {
+        <tr>
+            <td>@cuenta.TipoCuenta</td>
+        </tr>
+
+    }
+    <tbody>
+    </tbody>
+</table>

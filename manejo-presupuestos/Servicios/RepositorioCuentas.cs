@@ -6,6 +6,7 @@ namespace manejo_presupuestos.Servicios
 {
     public interface IRepositorioCuentas
     {
+        Task<IEnumerable<Cuentas>> BuscarCuentas(int usuarioId);
         Task Crear(Cuentas Cuenta);
     }
 
@@ -30,5 +31,16 @@ namespace manejo_presupuestos.Servicios
 
             await cnn.QuerySingleOrDefaultAsync(@"INSERT INTO Cuentas VALUES(@Nombre, @TipoCuentaId, @Balance, @Descripcion);", cuenta);
         }
+
+        public async Task<IEnumerable<Cuentas>> BuscarCuentas (int usuarioId)
+        {
+            using var cnn = new SqlConnection(connectionString);
+            var cuentas = await cnn.QueryAsync<Cuentas>(@"SELECT cu.Id, cu.Nombre, cu.Balance,tc.Nombre AS TipoCuenta
+                                                            FROM Cuentas cu
+                                                            JOIN TiposCuentas tc ON cu.TipoCuentaId = tc.Id
+                                                            WHERE tc.UsuarioId = @UsuarioId;", new { usuarioId });
+            return cuentas;
+        }
+        
     }
 }

@@ -51,6 +51,23 @@ namespace manejo_presupuestos.Controllers
 
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            int userId = servicioUsuarios.ObtenerUsuarioId();
+            var cuentas = await repositorioCuentas.BuscarCuentas(userId); //Output: An IEnumarable of Cuentas.
+            var modelo = cuentas
+                    .GroupBy(x => x.TipoCuenta) //Return a grouped object with key value properties (TipoCuenta as key).
+                    .Select(c => new IndexCuentasViewModel
+                    {
+                        TipoCuenta = c.Key, // key: TipoCuenta
+                        Cuentas = c.AsEnumerable()
+                    }).ToList();
+
+            return View(modelo);
+        }
+
+        // Obtiene los items del select para la creacion de tipos de cuentas 
         private async Task<IEnumerable<SelectListItem>> ObtenerListItemsTipoCuenta (int usuarioId)
         {
             var tiposCuentas = await repositorioTiposCuentas.ObtenerTiposCuentas(usuarioId);
