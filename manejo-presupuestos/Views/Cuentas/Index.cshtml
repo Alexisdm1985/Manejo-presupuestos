@@ -5,23 +5,35 @@
     ViewData["Title"] = "Cuentas";
 }
 
-<h1>Cuentas</h1>
+<h1 class="mb-3">Cuentas</h1>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Tipo de cuenta</th>
-            <th>Nombre</th>
-            <th>Balance</th>
-        </tr>
-    </thead>
-    @foreach(var cuenta in Model)
-    {
-        <tr>
-            <td>@cuenta.TipoCuenta</td>
-        </tr>
+<a asp-controller="Cuentas" asp-action="Crear" class="btn btn-dark mb-3">Crear cuenta</a>
 
-    }
-    <tbody>
-    </tbody>
-</table>
+<div class="contenedor-totales mb-3">
+    <div>
+        <div>
+            <strong>Activos</strong>
+        </div>
+        <div class="activo">
+            <p>@Model.Where(cuenta => cuenta.Balance > 0).Sum(x => x.Balance)</p>
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <strong>Pasivos</strong>
+        </div>
+        <div class="pasivo">
+            <p>@Model.Where(cuenta => cuenta.Balance < 0).Sum(x => x.Balance)</p>
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <strong>Total</strong>
+        </div>
+        <div>
+            <p>@Model.Sum(x => x.Balance)</p>
+        </div>
+    </div>
+</div>

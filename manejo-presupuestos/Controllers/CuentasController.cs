@@ -47,7 +47,7 @@ namespace manejo_presupuestos.Controllers
             }
 
             await repositorioCuentas.Crear(cuenta);
-            return RedirectToAction("Index", "TiposCuentas");
+            return RedirectToAction("Index");
 
         }
 
@@ -57,12 +57,13 @@ namespace manejo_presupuestos.Controllers
             int userId = servicioUsuarios.ObtenerUsuarioId();
             var cuentas = await repositorioCuentas.BuscarCuentas(userId); //Output: An IEnumarable of Cuentas.
             var modelo = cuentas
-                    .GroupBy(x => x.TipoCuenta) //Return a grouped object with key value properties (TipoCuenta as key).
+                    .GroupBy(x => x.TipoCuenta) //Return an object with the grouped property as KEY
                     .Select(c => new IndexCuentasViewModel
                     {
-                        TipoCuenta = c.Key, // key: TipoCuenta
+                        TipoCuenta = c.Key, // KEY = TipoCuenta
                         Cuentas = c.AsEnumerable()
                     }).ToList();
+
 
             return View(modelo);
         }
@@ -75,5 +76,3 @@ namespace manejo_presupuestos.Controllers
         }
     }
 }
-
-// TODO: Cambiar el asp-action de "Crear" a "Index" en el nav del layout de CuentasController
