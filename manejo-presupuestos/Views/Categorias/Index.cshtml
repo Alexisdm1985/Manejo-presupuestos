@@ -1,0 +1,37 @@
+﻿@using manejo_presupuestos.Models.Categorias;
+@model IEnumerable<Categoria>
+
+@{
+    ViewData["Title"] = "Categorias";
+}
+
+<h1 class="mb-3">Lista de categorias</h1>
+
+<a class="btn btn-primary mb-3" asp-controller="Categorias" asp-action="Crear">Crear categoria</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Acciones</th>
+            <th>Nombre</th>
+            <th>Tipo de operacion</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var categoria in Model)
+        {
+            <tr>
+                <td>
+                    <a class="btn btn-primary" asp-controller="Categorias" asp-action="Editar" asp-route-id="@categoria.Id">Editar</a>
+                    <a class="btn btn-danger" asp-controller="Categorias" asp-action="Eliminar" asp-route-id="@categoria.Id">Eliminar</a>
+                </td>
+                <td>
+                    <strong>@categoria.Nombre</strong>
+                </td>
+                <td>
+                    @categoria.TipoOperacionesId.ToString()
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
