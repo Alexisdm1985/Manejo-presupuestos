@@ -68,6 +68,53 @@ namespace manejo_presupuestos.Controllers
             return View(modelo);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Editar (int idCuenta)
+        {
+            int usuarioId = servicioUsuarios.ObtenerUsuarioId();
+            var cuenta = await repositorioCuentas.ObtenerCuentaPorId(idCuenta, usuarioId);
+            if (cuenta is null)
+            {
+                return RedirectToAction("NoEncontrado", "Home");
+            };
+
+            // Creacion del modelo para la vista
+            var modelo = new CuentaCreacionViewModel()
+            {
+                Id = cuenta.Id,
+                Nombre = cuenta.Nombre,
+                Balance = cuenta.Balance,
+                Descripcion = cuenta.Descripcion,
+                TipoCuentaId = cuenta.TipoCuentaId
+            };
+
+            modelo.TiposCuentas = await ObtenerListItemsTipoCuenta(usuarioId);
+            return View(modelo);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Editar (CuentaCreacionViewModel cuentaEditar)
+        {
+            // Validaciones
+            var usuarioId = servicioUsuarios.ObtenerUsuarioId();
+            var cuenta = await repositorioCuentas.ObtenerCuentaPorId(cuentaEditar.Id, usuarioId);
+            if (cuenta is null)
+            {
+                return RedirectToAction("NoEncontrado", "Home");
+            }
+
+            var tipoCuenta = await repositorioTiposCuentas.ObtenerTipoDeCuenta(cuentaEditar.TipoCuentaId, usuarioId);
+            if (tipoCuenta is null)
+            {
+                return RedirectToAction("NoEncontrado", "Home");
+            }
+
+            //Actualizacion
+            await repositorioCuentas.Actualizar(cuentaEditar);
+
+            return RedirectToAction("Index");
+        }
+
         // Obtiene los items del select para la creacion de tipos de cuentas 
         private async Task<IEnumerable<SelectListItem>> ObtenerListItemsTipoCuenta (int usuarioId)
         {
