@@ -9,6 +9,7 @@ namespace manejo_presupuestos.Servicios
         Task Actualizar(CuentaCreacionViewModel cuenta);
         Task<IEnumerable<Cuentas>> BuscarCuentas(int usuarioId);
         Task Crear(Cuentas Cuenta);
+        Task Eliminar(int id);
         Task<Cuentas> ObtenerCuentaPorId(int idCuenta, int usuarioId);
     }
 
@@ -34,7 +35,7 @@ namespace manejo_presupuestos.Servicios
             await cnn.QuerySingleOrDefaultAsync(@"INSERT INTO Cuentas VALUES(@Nombre, @TipoCuentaId, @Balance, @Descripcion);", cuenta);
         }
 
-        public async Task<IEnumerable<Cuentas>> BuscarCuentas (int usuarioId)
+        public async Task<IEnumerable<Cuentas>> BuscarCuentas(int usuarioId)
         {
             using var cnn = new SqlConnection(connectionString);
             var cuentas = await cnn.QueryAsync<Cuentas>(@"SELECT cu.Id, cu.Nombre, cu.Balance,tc.Nombre AS TipoCuenta
@@ -43,7 +44,7 @@ namespace manejo_presupuestos.Servicios
                                                             WHERE tc.UsuarioId = @UsuarioId;", new { usuarioId });
             return cuentas;
         }
-        
+
         public async Task<Cuentas> ObtenerCuentaPorId(int id, int usuarioId)
         {
             using var cnn = new SqlConnection(connectionString);
@@ -54,15 +55,21 @@ namespace manejo_presupuestos.Servicios
                 WHERE tc.UsuarioId = @UsuarioId AND cu.Id = @Id;", new { usuarioId, id });
         }
 
-        public async Task Actualizar (CuentaCreacionViewModel cuenta)
+        public async Task Actualizar(CuentaCreacionViewModel cuenta)
         {
             using var cnn = new SqlConnection(connectionString);
-            
+
             await cnn.ExecuteAsync(@"UPDATE Cuentas 
                                     SET Nombre = @Nombre, Balance = @Balance,
                                         Descripcion = @Descripcion, TipoCuentaId = @TipoCuentaId
                                     WHERE Id = @Id",
                                         cuenta);
+        }
+
+        public async Task Eliminar(int id)
+        {
+            using var cnn = new SqlConnection(connectionString);
+            await cnn.ExecuteAsync(@"DELETE Cuentas WHERE Id = @Id", new { id });
         }
     }
 }

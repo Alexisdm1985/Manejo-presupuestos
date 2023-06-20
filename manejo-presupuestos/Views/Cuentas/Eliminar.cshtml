@@ -1,0 +1,14 @@
+﻿@using manejo_presupuestos.Models.Cuenta
+@model Cuentas
+
+@{
+    ViewData["Title"] = "Eliminar Cuenta";
+}
+
+<h1 class="mb-3">Esta seguro/a de eliminar la cuenta: @Model.Nombre ?</h1>
+
+<form asp-action="EliminarCuenta">
+    <input type="hidden" asp-for="Id"/>
+    <button class="btn btn-danger" type="submit">Eliminar</button>
+    <a class="btn btn-dark" asp-controller="Cuentas" asp-action="Index">Cancelar</a>
+</form>
