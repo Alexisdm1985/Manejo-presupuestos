@@ -1,0 +1,90 @@
+﻿@using manejo_presupuestos.Models.Categorias;
+@using manejo_presupuestos.Models.Transaccion
+@model TransaccionCreacionViewModel
+
+@{
+    ViewData["Title"] = "Realizar Transaccion";
+}
+
+<h1>Crear Transaccion</h1>
+
+<form asp-action="Crear">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="FechaTransaccion" class="form-label"></label>
+        <input asp-for="FechaTransaccion" class="form-control" />
+        <span asp-validation-for="FechaTransaccion" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CuentaId" class="form-label"></label>
+        <select asp-for="CuentaId" asp-items="Model.Cuentas" class="form-select"></select>
+        <span asp-validation-for="CuentaId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="TipoOperacionId" class="form-label"></label>
+        <select asp-for="TipoOperacionId" asp-items="Html.GetEnumSelectList<TipoOperacion>()" class="form-select"></select>
+        <span asp-validation-for="TipoOperacionId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CategoriaId" class="form-label"></label>
+        <select asp-for="CategoriaId" asp-items="Model.Categorias" class="form-select"></select>
+        <span asp-validation-for="CategoriaId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Monto" class="form-label"></label>
+        <input asp-for="Monto" class="form-control" />
+        <span asp-validation-for="Monto" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Nota" class="form-label"></label>
+        <textarea asp-for="Nota" class="form-control"></textarea>
+        <span asp-validation-for="Nota" class="text-danger"></span>
+    </div>
+
+    <button class="btn btn-primary" type="submit">
+        Enviar
+    </button>
+
+    <a class="btn btn-dark" asp-controller="Home" asp-action="Index">
+        Cancelar
+    </a>
+
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+
+    
+    <script> // Obtener categorias segun tipo de operacion
+        
+        const urlObtenerCategorias = '@Url.Action("ObtenerCategorias")';
+
+        $(function () {
+            $("#TipoOperacionId").change(async function () {
+
+                const valorSeleccionado = $(this).val();
+
+                const respuesta = await fetch(urlObtenerCategorias, {
+                    method: "POST",
+                    body: valorSeleccionado,
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                const json = await respuesta.json();
+        
+                // Mapeo la respuesta para luego insertarla en el Select de categorias como <option>
+                const opciones = json.map( categoria => `<option value="${categoria.value}">${categoria.text}</option>`);
+
+                $("#CategoriaId").html(opciones);
+
+            });
+        });
+    </script>
+
+}

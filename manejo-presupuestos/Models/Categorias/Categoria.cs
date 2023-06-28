@@ -12,6 +12,7 @@ namespace manejo_presupuestos.Models.Categorias
 
         [Display(Name ="Tipo de categoria")]
         public TipoOperacion TipoOperacionesId { get; set; }
+
         public int UsuarioId { get; set; }
     }
 }

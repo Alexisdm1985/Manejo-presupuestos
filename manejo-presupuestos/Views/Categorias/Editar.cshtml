@@ -1,0 +1,34 @@
+﻿@using manejo_presupuestos.Models.Categorias;
+@model Categoria
+
+@{
+    ViewData["Title"] = "Editar categoria";
+}
+
+<h1 class="mb-3">Editar categoria: @Model.Nombre</h1>
+
+
+<form asp-action="Editar">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label class="form-label" asp-for="Nombre"></label>
+        <input asp-for="Nombre" class="form-control" />
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" asp-for="TipoOperacionesId"></label>
+        <select asp-for="TipoOperacionesId" asp-items="Html.GetEnumSelectList<TipoOperacion>()" class="form-select"></select>
+        <span asp-validation-for="TipoOperacionesId" class="text-danger"></span>
+    </div>
+
+    <button class="btn btn-primary" type="submit">
+        Guardar cambios
+    </button>
+
+    <a class="btn btn-dark" asp-controller="Categorias" asp-action="Index">
+        Cancelar
+    </a>
+</form>

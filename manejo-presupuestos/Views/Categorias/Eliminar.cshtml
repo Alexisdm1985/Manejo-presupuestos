@@ -1,0 +1,14 @@
+﻿@using manejo_presupuestos.Models.Categorias;
+@model Categoria
+
+@{
+    ViewData["Title"] = "Eliminar Categoria";
+}
+
+<h1 class="mb-3">Esta seguro/a de eliminar la categoria: @Model.Nombre ?</h1>
+
+<form asp-action="EliminarCategoria">
+    <input type="hidden" asp-for="Id" />
+    <button class="btn btn-danger" type="submit">Eliminar</button>
+    <a class="btn btn-dark" asp-controller="Categorias" asp-action="Index">Cancelar</a>
+</form>
