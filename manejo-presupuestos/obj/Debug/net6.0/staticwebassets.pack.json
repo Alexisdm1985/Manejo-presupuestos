@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\proyecto\\tutorial-asp-net\\Manejo-presupuestos\\manejo-presupuestos\\wwwroot\\js\\FormularioTransacciones.js",
+      "PackagePath": "staticwebassets\\js\\FormularioTransacciones.js"
+    },
+    {
       "Id": "C:\\proyecto\\tutorial-asp-net\\Manejo-presupuestos\\manejo-presupuestos\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

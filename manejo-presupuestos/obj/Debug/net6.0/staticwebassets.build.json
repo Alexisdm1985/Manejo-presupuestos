@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0Dle8yl6qXLopJeZWVuL2+3qu5+B2M0ilKaBfhtccms=",
+  "Hash": "LuAVDXN796g5vo9TdI6jlGzrGmGqiVSH9T4/b43Lm54=",
   "Source": "manejo-presupuestos",
   "BasePath": "_content/manejo-presupuestos",
   "Mode": "Default",
@@ -100,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\proyecto\\tutorial-asp-net\\Manejo-presupuestos\\manejo-presupuestos\\wwwroot\\js\\FormularioTransacciones.js",
+      "SourceId": "manejo-presupuestos",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\proyecto\\tutorial-asp-net\\Manejo-presupuestos\\manejo-presupuestos\\wwwroot\\",
+      "BasePath": "_content/manejo-presupuestos",
+      "RelativePath": "js/FormularioTransacciones.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\FormularioTransacciones.js"
     },
     {
       "Identity": "C:\\proyecto\\tutorial-asp-net\\Manejo-presupuestos\\manejo-presupuestos\\wwwroot\\js\\site.js",

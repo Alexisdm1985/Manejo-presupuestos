@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using manejo_presupuestos.Models.Categorias;
+using System.ComponentModel.DataAnnotations;
 
 namespace manejo_presupuestos.Models.Transaccion
 {
@@ -24,5 +25,8 @@ namespace manejo_presupuestos.Models.Transaccion
         [Display(Name = "Categoria")]
         [Range(1, maximum: int.MaxValue, ErrorMessage = "Debe seleccionar una Categoria")]
         public int CategoriaId { get; set; }
+
+        [Display(Name = "Tipo de operacion")]
+        public TipoOperacion TipoOperacionId { get; set; } = TipoOperacion.Ingreso;
     }
 }
