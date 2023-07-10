@@ -1,0 +1,12 @@
+﻿@using manejo_presupuestos.Models.Categorias;
+@using manejo_presupuestos.Models.Transaccion;
+
+@model ReporteTransaccionesDetalladas;
+
+@{
+    ViewData["Title"] = "Movimientos Cuenta";
+}
+
+<h1>Movimientos Cuenta @ViewBag.Cuenta</h1>
+
+<partial name="_ReporteTransaccionesDetalladas" model="Model" />

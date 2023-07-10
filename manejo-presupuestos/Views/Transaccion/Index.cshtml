@@ -1,0 +1,19 @@
+﻿@using manejo_presupuestos.Models.Categorias;
+@using manejo_presupuestos.Models.Transaccion;
+
+@model ReporteTransaccionesDetalladas;
+
+@{
+    ViewData["Title"] = "Reporte Diario";
+}
+
+
+<partial name="_SubMenu" model="SubMenuModel.Diario"/>
+
+<div class="mb-3">
+    <a asp-action="Crear" asp-controller="Transaccion" 
+    class="btn btn-primary">Crear una nueva transaccion</a>
+</div>
+
+
+<partial name="_ReporteTransaccionesDetalladas" model="Model"/>

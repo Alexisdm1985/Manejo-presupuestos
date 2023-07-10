@@ -80,7 +80,7 @@
                             <li class="list-group-item">
 
                                 <span>
-                                    <strong>@cuenta.Nombre</strong>
+                                    <strong><a asp-action="Detalle" asp-controller="Cuentas" asp-route-id="@cuenta.Id">@cuenta.Nombre</a></strong>
                                     <a class="btn btn-primary" asp-controller="Cuentas" asp-action="Editar" asp-route-idCuenta ="@cuenta.Id">
                                         Editar
                                     </a>

@@ -1,7 +1,9 @@
 ﻿using manejo_presupuestos.Models.Cuenta;
+using manejo_presupuestos.Models.Transaccion;
 using manejo_presupuestos.Servicios;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
 
 namespace manejo_presupuestos.Controllers
 {
@@ -10,14 +12,24 @@ namespace manejo_presupuestos.Controllers
         private readonly IRepositorioTiposCuentas repositorioTiposCuentas;
         private readonly IServicioUsuarios servicioUsuarios;
         private readonly IRepositorioCuentas repositorioCuentas;
+        private readonly IRepositorioTransacciones repositorioTransacciones;
+        private readonly IServicioReportes servicioReportes;
 
-        public CuentasController(IRepositorioTiposCuentas repositorioTiposCuentas, IServicioUsuarios servicioUsuarios, IRepositorioCuentas repositorioCuentas) 
+        public CuentasController(
+            IRepositorioTiposCuentas repositorioTiposCuentas,
+            IServicioUsuarios servicioUsuarios,
+            IRepositorioCuentas repositorioCuentas,
+            IRepositorioTransacciones repositorioTransacciones,
+            IServicioReportes servicioReportes) 
         {
             this.repositorioTiposCuentas = repositorioTiposCuentas;
             this.servicioUsuarios = servicioUsuarios;
             this.repositorioCuentas = repositorioCuentas;
+            this.repositorioTransacciones = repositorioTransacciones;
+            this.servicioReportes = servicioReportes;
         }
 
+     
         [HttpGet]
         public async Task<IActionResult> Crear()
         {
@@ -153,5 +165,28 @@ namespace manejo_presupuestos.Controllers
             var tiposCuentas = await repositorioTiposCuentas.ObtenerTiposCuentas(usuarioId);
             return tiposCuentas.Select(x => new SelectListItem(x.Nombre, x.Id.ToString()));
         }
+
+
+        // REPORTES
+        public async Task<IActionResult> Detalle(int id, int mes, int anio)
+        {
+            var usuarioId = servicioUsuarios.ObtenerUsuarioId();
+            
+            //Validaciones
+            var cuenta = await repositorioCuentas.ObtenerCuentaPorId(id, usuarioId);
+
+            if (cuenta is null)
+            {
+                return RedirectToAction("NoEncontrado", "Home");
+            }
+
+            ViewBag.Cuenta = cuenta.Nombre;
+
+            var modelo = await servicioReportes.ObtenerReporteTransaccionesDetalladasPorCuenta(usuarioId, id, mes, anio, ViewBag);
+
+            return View(modelo);
+        }
+
+
     }
 }

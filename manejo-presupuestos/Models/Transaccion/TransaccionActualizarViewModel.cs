@@ -7,5 +7,7 @@ namespace manejo_presupuestos.Models.Transaccion
     {
         public decimal MontoAnterior { get; set; }
         public int CuentaAnteriorId { get; set; }
+
+        public string ? urlRetorno { get; set; }
     }
 }
