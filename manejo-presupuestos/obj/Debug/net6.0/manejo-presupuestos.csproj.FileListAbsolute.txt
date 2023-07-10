@@ -65,3 +65,10 @@ C:\proyecto\tutorial-asp-net\Manejo-presupuestos\manejo-presupuestos\obj\Debug\n
 C:\proyecto\tutorial-asp-net\Manejo-presupuestos\manejo-presupuestos\obj\Debug\net6.0\manejo-presupuestos.pdb
 C:\proyecto\tutorial-asp-net\Manejo-presupuestos\manejo-presupuestos\obj\Debug\net6.0\manejo-presupuestos.genruntimeconfig.cache
 C:\proyecto\tutorial-asp-net\Manejo-presupuestos\manejo-presupuestos\obj\Debug\net6.0\ref\manejo-presupuestos.dll
+C:\proyecto\tutorial-asp-net\Manejo-presupuestos\manejo-presupuestos\bin\Debug\net6.0\ClosedXML.dll
+C:\proyecto\tutorial-asp-net\Manejo-presupuestos\manejo-presupuestos\bin\Debug\net6.0\DocumentFormat.OpenXml.dll
+C:\proyecto\tutorial-asp-net\Manejo-presupuestos\manejo-presupuestos\bin\Debug\net6.0\ExcelNumberFormat.dll
+C:\proyecto\tutorial-asp-net\Manejo-presupuestos\manejo-presupuestos\bin\Debug\net6.0\Irony.dll
+C:\proyecto\tutorial-asp-net\Manejo-presupuestos\manejo-presupuestos\bin\Debug\net6.0\SixLabors.Fonts.dll
+C:\proyecto\tutorial-asp-net\Manejo-presupuestos\manejo-presupuestos\bin\Debug\net6.0\System.IO.Packaging.dll
+C:\proyecto\tutorial-asp-net\Manejo-presupuestos\manejo-presupuestos\bin\Debug\net6.0\XLParser.dll

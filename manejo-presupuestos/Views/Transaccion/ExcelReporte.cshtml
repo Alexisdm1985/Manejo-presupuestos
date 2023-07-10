@@ -1,8 +1,65 @@
 ﻿@{
     ViewData["Title"] = "Reporte Excel";
+    var hoy = DateTime.Today;
+    var haceUnMes = hoy.AddMonths(-1);
+    var mesActual = hoy.Month;
+    var anioActual = hoy.Year;
+    var mesAnterior = haceUnMes.Month;
+    var mesAnteriorAnio= haceUnMes.Year;
+    var anioAnterior = anioActual - 1;
 }
 
 <h1> Reporte Excel</h1>
 
 
-<partial name="_SubMenu" Model="SubMenuModel.Excel" />
+<partial name="_SubMenu" model="SubMenuModel.Excel" />
+
+
+<div class="mb-3">
+    <a asp-controller="Transaccion"
+       asp-action="ExportarExcelPorMes"
+       asp-route-mes="@mesActual"
+       asp-route-anio="@anioActual"
+       class="btn btn-success">
+        Exportar Mes Actual
+    </a> ~ @hoy.ToString("MMM yyyy")
+</div>
+<div class="mb-3">
+    <a asp-controller="Transaccion"
+       asp-action="ExportarExcelPorMes"
+       asp-route-mes="@mesAnterior"
+       asp-route-anio="@mesAnteriorAnio"
+       class="btn btn-success">
+        Exportar Mes Anterior
+    </a> ~ @haceUnMes.ToString("MMM yyyy")
+
+</div>
+
+<div class="mb-3">
+    <a asp-controller="Transaccion"
+       asp-action="ExportarExcelPorAnio"
+       asp-route-anio="@anioActual"
+       class="btn btn-success">
+        Exportar anio Actual
+    </a> ~ @anioActual
+
+</div>
+
+<div class="mb-3">
+    <a asp-controller="ExportarExcelPorAnio"
+       asp-action="ExportarExcelPorMes"
+       asp-route-anio="@anioAnterior"
+       class="btn btn-success">
+        Exportar anio anterior
+    </a> ~ @anioAnterior
+
+</div>
+
+<div class="mb-3">
+    <a asp-controller="Transaccion"
+       asp-action="ExportarExcelTodo"
+       class="btn btn-success">
+        Exportar Todo
+    </a>
+
+</div>
