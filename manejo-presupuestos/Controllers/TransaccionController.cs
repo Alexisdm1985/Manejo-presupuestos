@@ -281,7 +281,8 @@ namespace manejo_presupuestos.Controllers
                         FechaFin = fechaFin,
                         FechaInicio = fechaInicio
                     });
-                }else
+                }
+                else
                 {
                     grupoSemana.FechaInicio = fechaInicio;
                     grupoSemana.FechaFin = fechaFin;
@@ -321,7 +322,7 @@ namespace manejo_presupuestos.Controllers
                             .Select(x => x.Monto).FirstOrDefault()
                     }).ToList();
 
-            for (int mes = 1; mes <= 12; mes ++)
+            for (int mes = 1; mes <= 12; mes++)
             {
                 var transaccion = transaccionesAgrupadas.FirstOrDefault(x => x.Mes == mes);
                 var fechaReferencia = new DateTime(anio, mes, 1);
@@ -460,6 +461,46 @@ namespace manejo_presupuestos.Controllers
         public IActionResult Calendario()
         {
             return View();
+        }
+
+
+        // Crea eventos en el calendario segun las transacciones desde la base de datos
+        public async Task<JsonResult> ObtenerTransaccionesCalendario(DateTime start, DateTime end)
+        {
+            var usuarioId = servicioUsuarios.ObtenerUsuarioId();
+
+            var transacciones = await repositorioTransacciones.ObtenerTransaccionPorUsuarioId(
+             new ParametroObtenerTransaccionesPorUsuario
+             {
+                 FechaFin = end,
+                 FechaInicio = start,
+                 UsuarioId = usuarioId
+             });
+
+            var eventosCalendario = transacciones.Select(transaccion => new EventoCalendario()
+            {
+                Title = transaccion.Monto.ToString("N"),
+                Start = transaccion.FechaTransaccion.ToString("yyyy-MM-dd"),
+                End = transaccion.FechaTransaccion.ToString("yyyy-MM-dd"),
+                Color = (transaccion.TipoOperacionId == TipoOperacion.Ingreso) ? null : "red"
+            });
+
+            return Json(eventosCalendario);
+        }
+
+        public async Task<JsonResult> ObtenerTransaccionesPorFecha(DateTime fecha)
+        {
+            var usuarioId = servicioUsuarios.ObtenerUsuarioId();
+
+            var transacciones = await repositorioTransacciones.ObtenerTransaccionPorUsuarioId(
+             new ParametroObtenerTransaccionesPorUsuario
+             {
+                 FechaFin = fecha,
+                 FechaInicio = fecha,
+                 UsuarioId = usuarioId
+             });
+
+            return Json(transacciones);
         }
     }
 }

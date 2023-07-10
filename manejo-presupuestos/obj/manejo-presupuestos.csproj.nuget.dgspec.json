@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\proyecto\\tutorial-asp-net\\Manejo-presupuestos\\manejo-presupuestos\\manejo-presupuestos.csproj": {}
+    "C:\\proyecto\\tutorial-asp-net\\manejo-presupuestos\\manejo-presupuestos\\manejo-presupuestos.csproj": {}
   },
   "projects": {
-    "C:\\proyecto\\tutorial-asp-net\\Manejo-presupuestos\\manejo-presupuestos\\manejo-presupuestos.csproj": {
+    "C:\\proyecto\\tutorial-asp-net\\manejo-presupuestos\\manejo-presupuestos\\manejo-presupuestos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\proyecto\\tutorial-asp-net\\Manejo-presupuestos\\manejo-presupuestos\\manejo-presupuestos.csproj",
+        "projectUniqueName": "C:\\proyecto\\tutorial-asp-net\\manejo-presupuestos\\manejo-presupuestos\\manejo-presupuestos.csproj",
         "projectName": "manejo-presupuestos",
-        "projectPath": "C:\\proyecto\\tutorial-asp-net\\Manejo-presupuestos\\manejo-presupuestos\\manejo-presupuestos.csproj",
+        "projectPath": "C:\\proyecto\\tutorial-asp-net\\manejo-presupuestos\\manejo-presupuestos\\manejo-presupuestos.csproj",
         "packagesPath": "C:\\Users\\alexi\\.nuget\\packages\\",
-        "outputPath": "C:\\proyecto\\tutorial-asp-net\\Manejo-presupuestos\\manejo-presupuestos\\obj\\",
+        "outputPath": "C:\\proyecto\\tutorial-asp-net\\manejo-presupuestos\\manejo-presupuestos\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\alexi\\AppData\\Roaming\\NuGet\\NuGet.Config",
