@@ -6,3 +6,22 @@
 
 
 <partial name="_SubMenu" Model="SubMenuModel.Calendario" />
+
+<div id="calendario"></div>
+
+@section Scripts {
+    <script src="~/lib/fullcalendar/index.global.js"></script>
+    <script src="~/lib/fullcalendar/index.global.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            const calendarioEL = document.getElementById('calendario');
+            const calendario = new FullCalendar.Calendar(calendarioEL, {
+                dayMaxEventRows: 3,
+                initialView: 'dayGridMonth'
+            })
+
+            calendario.render();
+        })
+    </script>
+}

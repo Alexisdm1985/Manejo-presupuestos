@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "LuAVDXN796g5vo9TdI6jlGzrGmGqiVSH9T4/b43Lm54=",
+  "Hash": "r8Dsr5fdGoWbCpgd87m+BsFw9AsD/msMRV1MfKAidBQ=",
   "Source": "manejo-presupuestos",
   "BasePath": "_content/manejo-presupuestos",
   "Mode": "Default",
@@ -899,6 +899,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\LICENSE"
+    },
+    {
+      "Identity": "C:\\proyecto\\tutorial-asp-net\\Manejo-presupuestos\\manejo-presupuestos\\wwwroot\\lib\\fullcalendar\\index.global.js",
+      "SourceId": "manejo-presupuestos",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\proyecto\\tutorial-asp-net\\Manejo-presupuestos\\manejo-presupuestos\\wwwroot\\",
+      "BasePath": "_content/manejo-presupuestos",
+      "RelativePath": "lib/fullcalendar/index.global.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\fullcalendar\\index.global.js"
+    },
+    {
+      "Identity": "C:\\proyecto\\tutorial-asp-net\\Manejo-presupuestos\\manejo-presupuestos\\wwwroot\\lib\\fullcalendar\\index.global.min.js",
+      "SourceId": "manejo-presupuestos",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\proyecto\\tutorial-asp-net\\Manejo-presupuestos\\manejo-presupuestos\\wwwroot\\",
+      "BasePath": "_content/manejo-presupuestos",
+      "RelativePath": "lib/fullcalendar/index.global.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\fullcalendar\\index.global.min.js"
     },
     {
       "Identity": "C:\\proyecto\\tutorial-asp-net\\Manejo-presupuestos\\manejo-presupuestos\\wwwroot\\lib\\jquery\\dist\\jquery.js",

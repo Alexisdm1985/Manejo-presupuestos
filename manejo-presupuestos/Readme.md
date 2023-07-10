@@ -7,3 +7,5 @@
 # FORMULARIOS - SelectListItem = https://www.udemy.com/course/aprende-aspnet-core-mvc-haciendo-proyectos-desde-cero/learn/lecture/29568804#questions/17712962
 
 # github curso proyecto = https://github.com/gavilanch/Aprende-ASP-NET-Core-MVC-Haciendo-Proyectos/blob/main/ASP.NET%20Core%206/Proyecto%202%20-%20Manejo%20Presupuesto%20-%20Los%20Otros%20CRUDs/Fin/ManejoPresupuesto/ManejoPresupuesto/Controllers/CategoriasController.cs
+# FullCalendar = https://fullcalendar.io/docs/initialize-globals
+
