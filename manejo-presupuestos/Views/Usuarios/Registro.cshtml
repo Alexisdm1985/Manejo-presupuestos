@@ -1,0 +1,30 @@
+﻿@using manejo_presupuestos.Models.Usuarios;
+@model RegistroViewModel
+
+@{
+    ViewData["Title"] = "Registro de usuario";
+}
+
+<h1>Registrate :D</h1>
+
+<form asp-action="Registro">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label class="form-label" asp-for="Email"></label>
+        <input class="form-control" asp-for="Email"/>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" asp-for="Contrasenia"></label>
+        <input class="form-control" type="password" asp-for="Contrasenia" />
+        <span asp-validation-for="Contrasenia" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Crear Usuario</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

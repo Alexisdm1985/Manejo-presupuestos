@@ -68,8 +68,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/proyecto/tutorial-asp-net/manejo-presupuestos/manejo-presupuestos/Views/Shared/_LinksLogin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MaW5rc0xvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/proyecto/tutorial-asp-net/manejo-presupuestos/manejo-presupuestos/Views/Shared/_NavegarPorMeses.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9OYXZlZ2FyUG9yTWVzZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/proyecto/tutorial-asp-net/manejo-presupuestos/manejo-presupuestos/Views/Shared/_Paginacion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9QYWdpbmFjaW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/proyecto/tutorial-asp-net/manejo-presupuestos/manejo-presupuestos/Views/Shared/_ReporteTransaccionesDetalladas.cshtml]
@@ -130,6 +138,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/proyecto/tutorial-asp-net/manejo-presupuestos/manejo-presupuestos/Views/Transaccion/_SubMenu.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNhY2Npb25cX1N1Yk1lbnUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/proyecto/tutorial-asp-net/manejo-presupuestos/manejo-presupuestos/Views/Usuarios/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/proyecto/tutorial-asp-net/manejo-presupuestos/manejo-presupuestos/Views/Usuarios/Registro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcUmVnaXN0cm8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/proyecto/tutorial-asp-net/manejo-presupuestos/manejo-presupuestos/Views/_ViewImports.cshtml]

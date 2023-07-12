@@ -3,6 +3,7 @@ using manejo_presupuestos.Models;
 using manejo_presupuestos.Models.Categorias;
 using manejo_presupuestos.Models.Transaccion;
 using manejo_presupuestos.Servicios;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.IdentityModel.Abstractions;
@@ -206,7 +207,16 @@ namespace manejo_presupuestos.Controllers
         private async Task<IEnumerable<SelectListItem>> ObtenerCategorias(int usuarioId, TipoOperacion tipoOperacion)
         {
             var categorias = await repositorioCategorias.ObtenerPorTipoOperacion(usuarioId, tipoOperacion);
-            return categorias.Select(x => new SelectListItem(x.Nombre, x.Id.ToString()));
+            var resultado = categorias
+                .Select(x => new SelectListItem(x.Nombre, x.Id.ToString()))
+                .ToList();
+
+            // orden de parametros : (string text, string text's value, IsSelected?)
+            var opcionPorDefecto = new SelectListItem("--- Selecciones una categoria ---", "0", true);
+
+            resultado.Insert(0, opcionPorDefecto);
+
+            return resultado;
         }
 
         //Peticion desde JS en la vista

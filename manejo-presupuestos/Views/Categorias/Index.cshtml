@@ -1,5 +1,5 @@
 ﻿@using manejo_presupuestos.Models.Categorias;
-@model IEnumerable<Categoria>
+@model PaginacionRespuesta<Categoria>
 
 @{
     ViewData["Title"] = "Categorias";
@@ -7,7 +7,22 @@
 
 <h1 class="mb-3">Lista de categorias</h1>
 
+<h2>Cantidad de categorias: @Model.CantidadTotalRecords - Cantidad de paginas: @Model.CantidadTotalDePaginas</h2>
+
 <a class="btn btn-primary mb-3" asp-controller="Categorias" asp-action="Crear">Crear categoria</a>
+
+
+<div class="row">
+    <label>Cantidad de registros a mostrar:</label>
+    <div class="mb-3 col-auto">
+        <select asp-for="@Model.RecordPorPgina" id="cantidadRecordsPorPagina" class="form-select">
+            <option>3</option>
+            <option>5</option>
+            <option>10</option>
+        </select>
+    </div>
+</div>
+<partial name="_Paginacion" />
 
 <table class="table table-striped">
     <thead>
@@ -18,7 +33,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var categoria in Model)
+        @foreach (var categoria in Model.Elementos)
         {
             <tr>
                 <td>
@@ -35,3 +50,14 @@
         }
     </tbody>
 </table>
+
+@section Scripts{
+
+    <script>
+        $("#cantidadRecordsPorPagina").change(function (){
+            
+            const recordsPorPagina = $(this).val();
+            location.href = `/Categorias/?Pagina=1&RecordsPorPagina=${recordsPorPagina}`;
+        });
+    </script>
+}
